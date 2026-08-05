@@ -4,13 +4,13 @@ Small CRUD API on Azure. Functions + Cosmos DB, deployed with Bicep from Cloud S
 
 ## Endpoints
 
-* `POST /api/notes` - create a note, returns generated id
-* `GET /api/notes/{id}` - get a note back by id
+- `POST /api/notes` - create a note, returns generated id
+- `GET /api/notes/{id}` - get a note back by id
 
 ## Architecture
 
 ```
-Client → Azure Function (Python) → Cosmos DB
+Client -> Azure Function (Python) -> Cosmos DB
 ```
 
 Function auth to Cosmos is via managed identity, no connection string/keys.
@@ -28,7 +28,7 @@ chmod +x deploy.sh
 ## Test
 
 ```bash
-curl -X POST https://<func-app-name>.azurewebsites.net/api/notes \\
+curl -X POST https://<func-app-name>.azurewebsites.net/api/notes \
   -H "Content-Type: application/json" -d '{"text":"hello world"}'
 
 curl https://<func-app-name>.azurewebsites.net/api/notes/<id-from-above>
@@ -40,11 +40,6 @@ curl https://<func-app-name>.azurewebsites.net/api/notes/<id-from-above>
 az group delete --name rg-notes-demo
 ```
 
+## Screenshots
 
-
-\## Screenshots
-
-
-
-!\[Application Insights operations](screenshots/app-insights-operations.png)
-
+![Application Insights operations](screenshots/app-insights-operations.png)
